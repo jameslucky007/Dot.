@@ -48,7 +48,7 @@ const BentoGrid = () => {
     flex flex-col
   "
 >
-  <p className="text-lg font-medium">Built for speed.</p>
+  <p className="text-lg font-medium">Built for speed.</p> 
   {/* ADD I-Phone Mock Ups */}
 </div>
 
