@@ -33,12 +33,7 @@ const testimonials = [
     role: "Marketing Lead",
     avatar: "/prof.jpg",
   },
-  {
-    text: "Their team’s artistic flair and strategic approach resulted in remarkable campaigns - a reliable creative partner.",
-    name: "Emily Carter",
-    role: "Brand Strategist",
-    avatar: "/prof.jpg",
-  },
+
 ];
 
 const Testimonial = () => {
