@@ -21,7 +21,11 @@ const USEFUL_LINKS = [
   { label: "Donate ❤️", href: "/donate" },
   { label: "About Us", href: "/about" },
   { label: "Documentation", href: "/docs" },
-  { label: "GitHub", href: "https://github.com/jameslucky007/Task-Vault", external: true },
+  {
+    label: "GitHub",
+    href: "https://github.com/jameslucky007/Task-Vault",
+    external: true,
+  },
 ];
 
 const Navbar = () => {
@@ -30,7 +34,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef(null);
 
-  // ✅ AOS INIT
+  // AOS INIT
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -102,16 +106,14 @@ const Navbar = () => {
             </button>
 
             {linksOpen && (
-              <div
-                data-aos="zoom-in"
-                className="absolute top-full left-0 mt-2 w-44 bg-white rounded-md shadow-lg"
-              >
+              <div className="absolute top-full left-0 mt-2 w-44 bg-white rounded-md shadow-lg">
                 <ul className="py-2 text-sm">
                   {USEFUL_LINKS.map((item) => (
                     <li key={item.label}>
                       <Link
                         href={item.href}
                         target={item.external ? "_blank" : "_self"}
+                        onClick={() => setLinksOpen(false)}
                         className="block px-4 py-2 hover:bg-gray-100"
                       >
                         {item.label}
@@ -125,10 +127,7 @@ const Navbar = () => {
 
           {/* Auth Buttons */}
           <div className="flex gap-3">
-            <Link
-              href="/login"
-              className="px-4 py-1.5 border rounded-md"
-            >
+            <Link href="/login" className="px-4 py-1.5 border rounded-md">
               Log in
             </Link>
 
