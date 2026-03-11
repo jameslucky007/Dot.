@@ -46,11 +46,11 @@ export default function HeroSection() {
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg shadow-md w-full sm:w-auto transition-all"
           >
-            <Download className="w-4 h-4" /> Download now
+            <Download className="w-4 h-4" /> Download now Android
           </a>
 
           <a href="/docs" className="flex items-center justify-center gap-2 border border-gray-300 hover:border-gray-400    hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 rounded-lg w-full sm:w-auto transition-all">
-            <Book className="w-4 h-4" /> Read Docs{" "}
+            <Book className="w-4 h-4" /> Ios{" "}
           </a>
         </div>
       </div>
