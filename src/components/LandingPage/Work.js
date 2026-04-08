@@ -1,110 +1,115 @@
-import React from "react";
+import React from 'react';
 
 const Work = () => {
+  const months = ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+  const dayLabels = ['Mon', 'Wed', 'Fri', 'Sun'];
+
+  const CheckboxCell = ({ type }) => {
+    let baseClass = "w-4 h-4 rounded border transition-colors cursor-default";
+    
+    const typeClasses = {
+      completed: "bg-yellow-400 border-black",
+      current: "bg-black border-black shadow-[0_0_6px_1px_rgba(0,0,0,0.2)]",
+      future: "bg-gray-100 border-gray-300",
+      pending: "bg-white border-black"
+    };
+
+    return <div className={`${baseClass} ${typeClasses[type] || typeClasses.pending}`} />;
+  };
+
+  const Grid = () => {
+    const totalCols = 53;
+    const totalRows = 7;
+    const currentDayCol = 43; 
+    const currentDayRow = 1; 
+
+    return (
+      <div className="flex flex-col gap-1 p-3 bg-white">
+        <div className="grid grid-flow-col gap-1" style={{ gridTemplateRows: `repeat(${totalRows}, minmax(0, 1fr))` }}>
+          {[...Array(totalCols)].map((_, col) => (
+            [...Array(totalRows)].map((_, row) => {
+              let type = 'pending';
+              
+              if (col > currentDayCol || (col === currentDayCol && row >= currentDayRow)) type = 'future';
+              if (col === currentDayCol && row === currentDayRow) type = 'current';
+
+              if (type === 'pending') {
+                const seed = (col * totalRows + row) * 71 + 37;
+                const isGap = (col > 10 && col < 15) || (col > 25 && col < 30) || row === 2 || row === 5;
+                if ((seed % 100) / 100 < (isGap ? 0.95 : 0.8)) type = 'completed';
+              }
+
+              return <CheckboxCell key={`${col}-${row}`} type={type} />;
+            })
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <>
-      <section className="w-full bg-white py-20">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 relative">
+    <div className="bg-gray-100 min-h-screen p-6 flex justify-center items-center font-sans">
+      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-5xl mx-auto flex flex-col gap-8 border border-gray-200">
+        
+        <div className="flex justify-between items-center">
+          <h1 className="text-5xl font-extrabold tracking-tighter text-black" style={{ fontFamily: 'var(--font-mono), monospace' }}>
+            Work out
+          </h1>
+          <button className="px-6 py-3 rounded-full border-2 border-black font-bold text-lg shadow-[4px_4px_0_0_black] bg-white text-black hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_0_black] transition-all">
+            Mark Today
+          </button>
+        </div>
 
+        <div className="relative">
+          <div className="flex items-start gap-3">
+            <div className="flex flex-col gap-[24px] pt-[20px] pr-2 text-right">
+              {dayLabels.map(label => (
+                <span key={label} className="text-xs font-medium text-gray-500 leading-none">{label}</span>
+              ))}
+            </div>
 
-          {/* LEFT SIDE CONTENT */}
-          <div>
-                  <h2 className="mb-5 text-4xl font-semibold">How It Works</h2>
-            <span className="inline-block bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full text-sm font-medium">
-              Step 1
-            </span>
+            <div className="flex-grow flex flex-col gap-2">
+              <div className="flex">
+                {months.map((month, i) => (
+                  <span key={i} className={`flex-1 text-center text-sm font-medium text-gray-900 ${i % 2 === 0 ? '-ml-2' : ''}`}>
+                    {month}
+                  </span>
+                ))}
+              </div>
+              <div className="bg-white rounded-lg overflow-hidden shadow-inner">
+                <Grid />
+              </div>
+            </div>
+          </div>
+          <div className="absolute left-[38.5%] bottom-[-16px] text-gray-400 text-xs font-black">▲</div>
+        </div>
 
-            <h2 className="text-4xl font-bold mt-4">
-              Bootstrap straight from your web app
-            </h2>
-
-            <p className="text-gray-600 mt-4 text-lg">
-              Copy and paste your web app url into ToDesktop. Customise your app design, 
-              app icon and window frame UI with no code.
-            </p>
-
-            {/* CHECKLISTS */}
-            <div className="grid grid-cols-2 gap-6 mt-6 text-gray-900 text-lg">
-
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600 text-xl">✓</span>
-                  <span>Multiple windows</span>
-                </li>
-
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600 text-xl">✓</span>
-                  <span>Offline support</span>
-                </li>
-
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600 text-xl">✓</span>
-                  <span>Launch on startup</span>
-                </li>
-              </ul>
-
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600 text-xl">✓</span>
-                  <span>Menubar / tray menus</span>
-                </li>
-
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600 text-xl">✓</span>
-                  <span>Customisable menus</span>
-                </li>
-
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600 text-xl">✓</span>
-                  <span>Tabs (Mac only)</span>
-                </li>
-              </ul>
-
+        <div className="flex justify-between items-end">
+          <div className="flex gap-6">
+            <div className="bg-white p-5 rounded-2xl border-2 border-black shadow-[4px_4px_0_0_black] w-40 flex flex-col gap-1">
+              <span className="text-5xl font-extrabold text-black tracking-tighter">29</span>
+              <span className="text-xs font-bold uppercase text-gray-600 tracking-wider">Current Streak</span>
+            </div>
+            <div className="bg-white p-5 rounded-2xl border-2 border-black shadow-[4px_4px_0_0_black] w-40 flex flex-col gap-1">
+              <span className="text-5xl font-extrabold text-black tracking-tighter">42</span>
+              <span className="text-xs font-bold uppercase text-gray-600 tracking-wider">Best Streak</span>
             </div>
           </div>
 
-          {/* RIGHT SIDE FLOATING UI CARD */}
-          <div className="relative">
-            <div className="absolute right-0 top-10 w-80 h-80 bg-white rounded-2xl shadow-xl border p-6 flex flex-col items-center justify-center">
-              
-              <div className="w-full h-full border-2 border-dashed rounded-xl flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-blue-500 text-3xl mb-2">⬆️</div>
-                  <p className="text-blue-600 font-semibold">Upload your app icon</p>
-                </div>
-              </div>
+          <div className="flex items-end gap-6">
+            <div className="bg-purple-700 p-5 rounded-2xl border-2 border-purple-900 shadow-[4px_4px_0_0_purple-900] text-white w-40 flex flex-col gap-1">
+              <span className="text-5xl font-extrabold tracking-tighter">138</span>
+              <span className="text-xs font-bold uppercase tracking-wider">Total Days</span>
             </div>
-
-            {/* Background UI widget assets */}
-            <div className="absolute right-40 top-0 bg-white shadow-lg rounded-xl p-4 text-gray-700 text-sm w-52">
-              <p className="font-semibold">Windows controls</p>
-              <ul className="mt-2 space-y-1">
-                <li>Allow fullscreen</li>
-                <li>Maximize</li>
-                <li>Minimize</li>
-              </ul>
+            <div className="bg-white p-5 rounded-2xl border-2 border-black shadow-[4px_4px_0_0_black] w-64 flex flex-col gap-1">
+              <span className="text-2xl font-extrabold text-black tracking-tight">Wednesday, Apr 8</span>
+              <span className="text-lg font-bold text-black opacity-80">2026</span>
             </div>
-
-            <div className="absolute right-0 top-[-30px] bg-white shadow-lg rounded-xl p-4 text-gray-700 text-sm w-44">
-              <div className="flex justify-between items-center mb-3">
-                <span>Start in full-screen</span>
-                <div className="h-5 w-10 bg-gray-300 rounded-full relative">
-                  <div className="h-5 w-5 bg-black rounded-full absolute right-0"></div>
-                </div>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <span>Resizable</span>
-                <div className="h-5 w-10 bg-blue-300 rounded-full relative">
-                  <div className="h-5 w-5 bg-blue-600 rounded-full absolute right-0"></div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
-      </section>
-    </>
+
+      </div>
+    </div>
   );
 };
 
