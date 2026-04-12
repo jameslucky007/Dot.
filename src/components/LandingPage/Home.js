@@ -12,7 +12,7 @@ export default function HeroSection() {
           className=" cursor-pointer flex flex-wrap items-center justify-center gap-2 bg-yellow-100 text-yellow-800 px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-6 shadow-sm w-fit mx-auto hover:-translate-y-1 transition"
         >
           <span className="w-2 h-2 bg-yellow-500 rounded-full animate-bounce" />
-          v0.21.1: Find-in-page bug fixes →
+          v1.0.0: Find-in-page bug fixes →
         </a>
 
         {/* Feature information Text*/}

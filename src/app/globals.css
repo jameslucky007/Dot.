@@ -40,7 +40,8 @@ html,
 body {
   height: auto !important;
   overflow: visible !important;
-  scroll-behavior: auto !important; /* disable native smooth scroll */
+  scroll-behavior: auto !important;
+  /* disable native smooth scroll */
 }
 
 .lenis.lenis-smooth {
@@ -105,3 +106,4 @@ body {
   animation: scroll-left 10s linear infinite;
   -webkit-animation: scroll-left 10s linear infinite;
 }
+

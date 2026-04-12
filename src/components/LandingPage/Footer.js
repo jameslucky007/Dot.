@@ -1,78 +1,146 @@
 import React from "react";
 import Image from "next/image";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import Link from "next/link"; // Import Next.js Link for better navigation
+import {
+  FaInstagram,
+  FaLinkedin,
+  FaYoutube,
+  FaGlobeAsia,
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { RxCross2 } from "react-icons/rx";
+import { div } from "framer-motion/client";
 
 const Footer = () => {
+  // Pages links and navigation
+  const navLinks = [
+    { name: "Home", href: "#" },
+    { name: "Support", href: "#" },
+    { name: "Privacy Policy", href: "#" },
+    { name: "Terms of Service", href: "#" },
+  ];
+
+  // Social media links with icons
+  const socialLinks = [
+    {
+      icon: <FaYoutube size={22} />,
+      href: "https://youtube.com",
+      label: "YouTube",
+    },
+    {
+      icon: <FaXTwitter size={22} />,
+      href: "https://twitter.com",
+      label: "Twitter",
+    },
+    {
+      icon: <FaInstagram size={22} />,
+      href: "https://instagram.com",
+      label: "Instagram",
+    },
+    {
+      icon: <FaLinkedin size={22} />,
+      href: "https://linkedin.com",
+      label: "LinkedIn",
+    },
+    {
+      icon: <FaGlobeAsia size={22} />,
+      href: "https://yourwebsite.com",
+      label: "Website",
+    },
+  ];
+
   return (
     <>
-      <section className="w-full flex justify-center py-20 px-4">
-        <div className="relative w-full max-w-7xl rounded-[32px] overflow-hidden p-16 text-center bg-gray-900">
-          {/* Mesh Gradient Layers */}
-          <div className="absolute inset-0">
-            {/* Soft glow 1 */}
-            <div className="absolute w-[600px] h-[600px] rounded-full bg-black  blur-[120px] animate-mesh-1"></div>
+   <div className="w-full flex justify-center px-4 py-16 md:py-24 bg-black text-white">
+  <div className="max-w-4xl w-full text-center">
 
-            {/* Soft glow 2 */}
-            <div className="absolute w-[500px] h-[500px] rounded-full bg-gray-100  blur-[150px] animate-mesh-2"></div>
+    {/* Heading */}
+    <h2 className="text-3xl md:text-5xl font-bold mb-10 animate-fade-up">
+      Why I built this
+    </h2>
 
-            {/* Soft glow 3 */}
-            <div className="absolute w-[700px] h-[700px] rounded-full bg-black  blur-[150px] animate-mesh-3"></div>
-          </div>
+    {/* Image */}
+    <div className="flex justify-center mb-8">
+      <img
+        src="/Profile.png"
+        alt="Founder"
+        className="w-48 h-48 md:w-60 md:h-60 object-cover rounded-2xl border border-white/20 shadow-lg animate-fade-up delay-100"
+      />
+    </div>
 
-          {/* MAIN CONTENT */}
-          <div className="relative z-10 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Pronto para transformar o seu negócio?
-            </h2>
-            <p className="text-lg mb-8 opacity-95">
-              Agende uma avaliação gratuita e descubra como a Azimute pode
-              ajudar a sua empresa.
-            </p>
+    {/* Text */}
+    <h2 className="text-bold text-white text-4xl mb-5"> - Lucky </h2>
+    <p className="text-base md:text-lg  text-gray-300 animate-fade-up delay-200">
+  I kept running into the same problem—I couldn’t stay focused on one thing.
+  I’d start something, lose consistency, and waste days without real progress.
+  <br /><br />
+  The bigger issue was this: I had no clear way to track my habits daily or
+  actually *see* my consistency. Everything felt abstract, and that made it
+  easy to quit.
+  <br /><br />
+  What changed my perspective was simple—visual progress. When you can see
+  your consistency, like a chain or a pattern, it becomes harder to break.
+  Missing a day creates a visible gap. Staying consistent builds momentum.
+  <br /><br />
+  That’s why I built this.
+  <br /><br />
+  A system that doesn’t just store tasks, but helps you stay consistent,
+  track habits visually, and turn goals into daily execution.
+</p>
+  </div>
+</div>
 
-            <button className="bg-white text-blue-700 px-6 py-3 rounded-full font-medium shadow hover:shadow-md transition">
-              Agende já uma avaliação gratuita
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="w-full bg-black pt-5 px-5 text-white">
-        {/* TOP FOOTER BLOCK */}
-        <div className="max-w-9xl  mx-auto bg-[#0f0f0f] rounded-3xl p-10 text-center border border-white/10">
-          <div className="flex justify-center items-center gap-3 mb-10  ">
-            <Image src="/logo-2.svg" width={40} height={40} alt="Brand Logo" />
-
-            <h2 className="text-2xl font-semibold text-white">Task Vault</h2>
-          </div>
-
-          {/* Navigation */}
-          <nav className="flex justify-center gap-10 text-gray-300 text-sm font-medium mb-10">
-            <a className="hover:text-white transition">Homepage</a>
-            <a className="hover:text-white transition">About Us</a>
-            <a className="hover:text-white transition">Support</a>
-            <a className="hover:text-white transition">Privacy Policy</a>
-
-
-          </nav>
-
-          {/* Social Icons */}
-          <div className="flex justify-center gap-6 mt-4 text-gray-300">
-            <FaFacebook size={22} className="hover:text-white transition" />
-            <FaXTwitter size={22} className="hover:text-white transition"  />
-            <FaInstagram size={22} className="hover:text-white transition" />
-            <FaLinkedin size={22} className="hover:text-white transition" />
-          </div>
+    {/* Footer */}
+    <footer className="w-full bg-black pt-5 px-4 md:px-5 text-white">
+      <div className="max-w-7xl mx-auto bg-[#0f0f0f] rounded-3xl p-8 md:p-10 text-center border border-white/10">
+        {/* Logo & Brand */}
+        <div className="flex justify-center items-center gap-3 mb-8">
+          <Image
+            src="/logo-2.svg"
+            width={40}
+            height={40}
+            alt="Task Vault Logo"
+          />
+          <h2 className="text-2xl font-semibold text-white">Task Vault</h2>
         </div>
 
-        {/* Bottom Footer Strip */}
-        <div className="max-w-6xl mx-auto mt-2 text-center py-6">
-          <hr className="mb-4 border-white/10" />
-          <p className="text-gray-400 text-l">Copyright 2025©Task Vault</p>
+        {/* Navigation Links */}
+        <nav className="flex flex-wrap justify-center gap-6 mb-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Social Icons */}
+        <div className="flex justify-center gap-5">
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-transform hover:scale-110"
+              aria-label={social.label}
+            >
+              {social.icon}
+            </a>
+          ))}
         </div>
-      </footer>
+      </div>
+
+      {/* Bottom Footer Strip */}
+      <div className="max-w-6xl mx-auto mt-2 text-center py-6">
+        <hr className="mb-4 border-white/10" />
+        <p className="text-gray-400 text-sm md:text-base">
+          Copyright {new Date().getFullYear()} © Task Vault
+        </p>
+      </div>
+    </footer>
     </>
   );
 };
