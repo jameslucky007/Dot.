@@ -43,7 +43,7 @@ const Footer = () => {
     },
     {
       icon: <FaGlobeAsia size={22} />,
-      href: "https://yourwebsite.com",
+      href: "https://luckya.vercel.app/",
       label: "Website",
     },
   ];
