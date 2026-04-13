@@ -15,21 +15,12 @@ import "aos/dist/aos.css";
 const MAIN_MENU = [
   { label: "Home", href: "/" },
   { label: "Support", href: "/support" },
+  { label: "Documentation", href: "/docs" },
+    { label: "Donate ❤️", href: "/donate" }
 ];
 
-const USEFUL_LINKS = [
-  { label: "Donate ❤️", href: "/donate" },
-  { label: "About Us", href: "/about" },
-  { label: "Documentation", href: "/docs" },
-  {
-    label: "GitHub",
-    href: "https://github.com/jameslucky007/Task-Vault",
-    external: true,
-  },
-];
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [linksOpen, setLinksOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef(null);
@@ -87,43 +78,7 @@ const Navbar = () => {
             </Link>
           ))}
 
-          {/* Dropdown */}
-          <div ref={dropdownRef} className="relative">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setLinksOpen((p) => !p);
-              }}
-              className="flex items-center gap-1"
-            >
-              Useful Links
-              <ChevronDown
-                size={18}
-                className={`transition-transform ${
-                  linksOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-
-            {linksOpen && (
-              <div className="absolute top-full left-0 mt-2 w-44 bg-white rounded-md shadow-lg">
-                <ul className="py-2 text-sm">
-                  {USEFUL_LINKS.map((item) => (
-                    <li key={item.label}>
-                      <Link
-                        href={item.href}
-                        target={item.external ? "_blank" : "_self"}
-                        onClick={() => setLinksOpen(false)}
-                        className="block px-4 py-2 hover:bg-gray-100"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
+         
 
           {/* Auth Buttons */}
           <div className="flex gap-3">

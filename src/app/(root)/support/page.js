@@ -47,6 +47,8 @@ const Page = () => {
             src="/logo-2.svg"  
             alt="logo"
             className="w-32 opacity-90"
+            width={128}
+            height={128}
           />
         </div>
 
