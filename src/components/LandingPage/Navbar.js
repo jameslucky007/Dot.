@@ -15,8 +15,7 @@ import "aos/dist/aos.css";
 const MAIN_MENU = [
   { label: "Home", href: "/" },
   { label: "Support", href: "/support" },
-  { label: "Documentation", href: "/docs" },
-    { label: "Donate ❤️", href: "/donate" }
+  { label: "Donate ❤️", href: "/donate" }
 ];
 
 
