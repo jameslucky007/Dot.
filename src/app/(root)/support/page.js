@@ -1,4 +1,5 @@
 "use client";
+import { Navbar } from "@heroui/react";
 import React, { useState } from "react";
 
 const Page = () => {
@@ -31,7 +32,9 @@ const Page = () => {
   ];
 
   return (
+   
     <div className="min-h-screen bg-white text-white flex items-center justify-center p-6 ">
+        <Navbar />
       <style jsx>{`
         @keyframes float {
           0%, 100% { transform: translateY(0) rotate(0deg); }

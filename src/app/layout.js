@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning
         className={`${poppins.variable} ${roboto.variable} antialiased`}
       >
-        <Navbar />
+
 
         <SmoothScrollProvider>
           <PageWrapper>{children}</PageWrapper>

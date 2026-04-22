@@ -1,8 +1,12 @@
+import Navbar from "@/components/LandingPage/Navbar";
 import React from "react";
 
 const page = () => {
   return (
-    <section className="min-h-screen bg-gray-50 px-6 py-16 flex justify-center">
+    <>
+       <Navbar />
+        <section className="min-h-screen bg-gray-50 px-6 py-16 flex justify-center">
+       
       <div className="max-w-4xl w-full space-y-12">
 
         {/* Header */}
@@ -94,6 +98,8 @@ const page = () => {
 
       </div>
     </section>
+    </>
+   
   );
 };
 

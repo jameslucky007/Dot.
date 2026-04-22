@@ -1,9 +1,12 @@
 "use client";
 import { Download, Book, Laptop, Code2, Hand } from "lucide-react";
+import Navbar from "./Navbar";
 
 export default function HeroSection() {
   return (
+
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden">
+            <Navbar />
       <div className="absolute inset-0 bg-[url('/HeroBg.jpg')] bg-cover bg-top opacity-35"></div>
       <div className="relative z-10 w-full max-w-5xl px-6">
         {/* Version Bar */}
